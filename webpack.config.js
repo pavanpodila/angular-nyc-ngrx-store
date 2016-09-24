@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract(['css?sourceMap', 'sass?sourceMap'].join('!'))
+                loader: ExtractTextPlugin.extract(['css?sourceMap', 'sass?sourceMap'])
             },
             {
                 test: /\.ts$/,
