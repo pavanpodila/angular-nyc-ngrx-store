@@ -1,0 +1,30 @@
+<div *ngIf="photo">
+    <small class="tag tag-pill tag-default">{{photo.id}}</small>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Enter a name..." [ngModel]="photo.name">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Save</button>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Describe your photo..." [ngModel]="photo.description">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Save</button>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <img src="{{ photo.url }}" style="width: 100%">
+
+</div>
