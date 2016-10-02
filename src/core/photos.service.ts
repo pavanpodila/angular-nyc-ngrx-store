@@ -118,17 +118,10 @@ export class PhotoService {
             ])
     ];
 
-    getAlbums(): Album[] {
-        return this.albums;
+    getAlbums(): Promise<Album[]> {
+        return Promise.resolve(this.albums);
     }
 
-    getAlbum(id): Album {
-        return this.albums.find(x => x.id === id);
-    }
-
-    getPhoto(id): Photo {
-        return this.photos.find(x => x.id === id);
-    }
 
 
     createAlbum(name, photos) {

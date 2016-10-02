@@ -10,10 +10,12 @@ import { AlbumComponent } from './album/album';
 import { PhotoService } from './core/photos.service';
 import { PhotoComponent } from './photo/photo';
 import { FormsModule } from '@angular/forms';
+import { reducer, initialState } from './core/store';
+
 @NgModule({
     imports: [
         BrowserModule,
-        StoreModule,
+        StoreModule.provideStore(reducer, initialState),
         RouterModule,
         FormsModule,
         routing

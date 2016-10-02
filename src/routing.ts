@@ -7,8 +7,14 @@ import { PhotoComponent } from './photo/photo';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },
-    { path: 'albums/:albumId', component: AlbumComponent },
-    { path: 'photos/:photoId', component: PhotoComponent },
+    {
+        path: 'albums/:albumId',
+        children: [
+            { path: '', component: AlbumComponent },
+            { path: 'photos/:photoId', component: PhotoComponent },
+        ]
+
+    },
     { path: '**', component: UnknownComponent }
 ];
 
