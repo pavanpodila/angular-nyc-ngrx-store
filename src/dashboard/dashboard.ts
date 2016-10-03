@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from '../core/photos.service';
-import { AppState } from '../core/store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/map';
+import { Album } from '../core/domain';
+import { AppState } from '../core';
 
 @Component({
     selector: 'dashboard',

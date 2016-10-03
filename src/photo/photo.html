@@ -4,9 +4,10 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Enter a name..." [ngModel]="photo.name">
+                <input type="text" class="form-control" placeholder="Enter a name..." [ngModel]="photo.name" #nameInput>
                 <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Save</button>
+                <button class="btn btn-secondary" type="button"
+                        (click)="savePhotoWithName(nameInput.value)">Save</button>
             </span>
             </div>
         </div>
@@ -15,9 +16,12 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Describe your photo..." [ngModel]="photo.description">
+                <input type="text" class="form-control" placeholder="Describe your photo..."
+                       [ngModel]="photo.description"
+                       #descriptionInput>
                 <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Save</button>
+                <button class="btn btn-secondary" type="button"
+                        (click)="savePhotoWithDescription(descriptionInput.value)">Save</button>
             </span>
             </div>
         </div>

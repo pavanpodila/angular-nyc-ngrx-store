@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Photo, Album } from '../core/photos.service';
-import { AppState } from '../core/store';
+import { EDIT_PHOTO_NAME, EDIT_PHOTO_DESCRIPTION } from '../core/store';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { Photo, Album } from '../core/domain';
+import { AppState } from '../core';
 @Component({
     selector: 'photo',
     template: require('./photo.html')
@@ -37,4 +38,25 @@ export class PhotoComponent implements OnInit, OnDestroy {
     }
 
 
+    savePhotoWithName(name: string) {
+        this.store.dispatch({
+            type: EDIT_PHOTO_NAME,
+            payload: {
+                albumId: this.albumId,
+                photoId: this.photoId,
+                name
+            }
+        });
+    }
+
+    savePhotoWithDescription(description: string) {
+        this.store.dispatch({
+            type: EDIT_PHOTO_DESCRIPTION,
+            payload: {
+                albumId: this.albumId,
+                photoId: this.photoId,
+                description
+            }
+        });
+    }
 }

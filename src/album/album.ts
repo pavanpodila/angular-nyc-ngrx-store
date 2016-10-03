@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Album } from '../core/photos.service';
 import { Store } from '@ngrx/store';
-import { AppState, EDIT_ALBUM_NAME } from '../core/store';
+import { EDIT_ALBUM_NAME } from '../core/store';
 import { Subscription, Observable } from 'rxjs';
-
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
+import { Album } from '../core/domain';
+import { AppState } from '../core';
 
 @Component({
     selector: 'album',
