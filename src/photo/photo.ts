@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EDIT_PHOTO_NAME, EDIT_PHOTO_DESCRIPTION } from '../core/store';
-import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
-import { Photo, Album } from '../core/domain';
-import { AppState } from '../core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {Subscription} from 'rxjs';
+import {Photo} from '../core/domain';
+import {AppState} from '../core/store';
+import {EDIT_PHOTO_DESCRIPTION, EDIT_PHOTO_NAME, SELECT_PHOTO} from '../core/albums.reducer';
+import {PhotoService} from '../core/photos.service';
 @Component({
     selector: 'photo',
     template: require('./photo.html')
@@ -14,27 +15,34 @@ export class PhotoComponent implements OnInit, OnDestroy {
     private albumId;
     private photoId;
     private subscription: Subscription;
+    private loading = false;
+    private loadSubscription: Subscription;
 
-    constructor(private route: ActivatedRoute, private store: Store<AppState>) {
+    constructor(private route: ActivatedRoute,
+                private store: Store<AppState>,
+                private service: PhotoService) {
     }
 
     ngOnInit(): void {
-        this.albumId = this.route.snapshot.params[ 'albumId' ];
-        this.photoId = this.route.snapshot.params[ 'photoId' ];
+        this.albumId = this.route.snapshot.params['albumId'];
+        this.photoId = this.route.snapshot.params['photoId'];
 
-        this.subscription = this.store.select('albums')
-            .flatMap((x: Album[]) => Observable.from(x))
-            .filter(x => x.id === this.albumId)
-            .switchMap(x => Observable.from(x.photos))
-            .filter(x => x.id === this.photoId)
-            .take(1)
+        this.subscription = this.store.select(x => x.albums.selectedPhoto)
             .subscribe((photo: Photo) => {
                 this.photo = photo;
             });
+
+        this.loadSubscription = this.store.select(x => x.operation.loadingPhoto)
+            .subscribe(flag => {
+                this.loading = flag;
+            });
+
+        this.service.loadPhoto(this.photoId, this.albumId);
     }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+        this.loadSubscription.unsubscribe();
     }
 
 

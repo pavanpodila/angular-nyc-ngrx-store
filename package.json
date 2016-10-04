@@ -4,6 +4,7 @@
   "description": "A Demo App for the Angular NYC Meetup",
   "scripts": {
     "start": "webpack-dev-server",
+    "postinstall": "typings install",
     "typings": "typings"
   },
   "author": "Pavan Podila <pavan@pixelingene.com>",

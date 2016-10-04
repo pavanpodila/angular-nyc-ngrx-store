@@ -4,7 +4,7 @@ export class Photo {
     date: Date;
     author: string;
 
-    constructor(public name: string, public url: string) {
+    constructor(public name: string = '', public url: string = '') {
     }
 }
 
@@ -13,11 +13,8 @@ export class Album {
     photos: Photo[];
     thumbnail: Photo;
 
-    constructor(public name: string) {
+    constructor(public name: string = '') {
 
     }
 }
 
-export interface AppState {
-    albums: Album[];
-}
