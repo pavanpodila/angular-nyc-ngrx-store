@@ -6,7 +6,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
 import {Album} from '../core/domain';
 import {AppState} from '../core/store';
-import {EDIT_ALBUM_NAME} from '../core/albums.reducer';
+import {CHANGE_ALBUM} from '../core/albums.reducer';
 import {PhotoService} from '../core/photos.service';
 
 @Component({
@@ -46,13 +46,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     }
 
     saveAlbum(name) {
-        this.store.dispatch({
-            type: EDIT_ALBUM_NAME,
-            payload: {
-                name,
-                albumId: this.albumId
-            }
-        });
+        this.service.changeAlbum(this.albumId, name);
     }
 
 }

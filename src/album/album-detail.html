@@ -1,0 +1,26 @@
+<p class="text-xs-right">
+    <small>You have <strong class="tag tag-primary tag-pill">{{ album.photos.length }}</strong> photo(s)</small>
+</p>
+
+
+<small class="tag tag-pill tag-default">{{album.id}}</small>
+
+<div class="row">
+    <div class="col-xs-12">
+        <input type="text" class="form-control" placeholder="Enter a name..." [ngModel]="album.name" #input>
+        <button class="btn btn-sm btn-primary m-t-1" type="button" (click)="saveAlbum(input.value)">Save</button>
+    </div>
+</div>
+
+<hr>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let photo of album.photos">
+        <div class="card"
+             [routerLink]="['photos', photo.id]" style="cursor: pointer;">
+            <div class="card-header">{{ photo.name }}</div>
+            <img src="{{ photo.url }}" class="card-img" style="width: 100%;" height="240">
+        </div>
+    </div>
+</div>

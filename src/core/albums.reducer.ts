@@ -2,11 +2,10 @@ import {Album, Photo} from './domain';
 import {ActionReducer, Action} from '@ngrx/store';
 
 export const LOAD_ALBUMS = 'LOAD_ALBUMS';
-export const EDIT_PHOTO_NAME = 'EDIT_PHOTO_NAME';
-export const EDIT_PHOTO_DESCRIPTION = 'EDIT_PHOTO_DESCRIPTION';
+export const CHANGE_PHOTO = 'CHANGE_PHOTO';
 export const SELECT_ALBUM = 'SELECT_ALBUM';
 export const SELECT_PHOTO = 'SELECT_PHOTO';
-export const EDIT_ALBUM_NAME = 'EDIT_ALBUM_NAME';
+export const CHANGE_ALBUM = 'CHANGE_ALBUM';
 
 export interface AlbumState {
     collection: Album[];
@@ -41,32 +40,34 @@ export const reducer: ActionReducer<AlbumState> = (state: AlbumState, action: Ac
             });
         }
 
-        case EDIT_PHOTO_NAME: {
-            return savePhotoWithField('name');
-        }
-
-        case EDIT_PHOTO_DESCRIPTION:
-            return savePhotoWithField('description');
-
-        case EDIT_ALBUM_NAME: {
-            const {albumId, name} = action.payload;
+        case CHANGE_PHOTO: {
+            const {albumId, photoId, name, description} = action.payload;
             const album = state.collection.find(x => x.id === albumId);
-            album.name = name;
+            const photo = album.photos.find(x => x.id === photoId);
+
+            photo.name = name;
+            photo.description = description;
 
             return Object.assign({}, state);
+        }
+
+        case CHANGE_ALBUM: {
+            const {albumId, name} = action.payload;
+            const index = state.collection.findIndex(x => x.id === albumId);
+            const album = Object.assign(new Album(), state.collection[index], {name});
+
+            state.collection[index] = album;
+            const selectedAlbum = (state.selectedAlbum && state.selectedAlbum.id === albumId)
+                ? album
+                : state.selectedAlbum;
+
+            return Object.assign({}, state, {
+                selectedAlbum
+            });
         }
 
         default:
             return state;
     }
 
-    function savePhotoWithField(field) {
-        const {albumId, photoId} = action.payload;
-        const album = state.collection.find(x => x.id === albumId);
-        const photo = album.photos.find(x => x.id === photoId);
-
-        photo[field] = action.payload[field];
-
-        return Object.assign({}, state);
-    }
 };

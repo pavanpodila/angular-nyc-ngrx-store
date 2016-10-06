@@ -4,7 +4,6 @@ import {Store} from '@ngrx/store';
 import {Subscription} from 'rxjs';
 import {Photo} from '../core/domain';
 import {AppState} from '../core/store';
-import {EDIT_PHOTO_DESCRIPTION, EDIT_PHOTO_NAME, SELECT_PHOTO} from '../core/albums.reducer';
 import {PhotoService} from '../core/photos.service';
 @Component({
     selector: 'photo',
@@ -46,25 +45,8 @@ export class PhotoComponent implements OnInit, OnDestroy {
     }
 
 
-    savePhotoWithName(name: string) {
-        this.store.dispatch({
-            type: EDIT_PHOTO_NAME,
-            payload: {
-                albumId: this.albumId,
-                photoId: this.photoId,
-                name
-            }
-        });
+    savePhoto(name: string, description: string) {
+        this.service.changePhoto(this.photoId, this.albumId, name, description)
     }
 
-    savePhotoWithDescription(description: string) {
-        this.store.dispatch({
-            type: EDIT_PHOTO_DESCRIPTION,
-            payload: {
-                albumId: this.albumId,
-                photoId: this.photoId,
-                description
-            }
-        });
-    }
 }
