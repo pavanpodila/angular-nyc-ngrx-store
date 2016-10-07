@@ -1,10 +1,10 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs';
-import {Photo} from '../core/domain';
-import {AppState} from '../core/store';
-import {PhotoService} from '../core/photos.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { Photo } from '../core/domain';
+import { AppState } from '../core/store';
+import { PhotoService } from '../core/photos.service';
 @Component({
     selector: 'photo',
     template: require('./photo.html')

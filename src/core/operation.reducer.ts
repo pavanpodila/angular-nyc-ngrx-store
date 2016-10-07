@@ -1,4 +1,4 @@
-import {ActionReducer, Action} from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const START_ALBUMS_LOAD = 'START_ALBUMS_LOAD';
 export const START_ALBUM_LOAD = 'START_ALBUM_LOAD';

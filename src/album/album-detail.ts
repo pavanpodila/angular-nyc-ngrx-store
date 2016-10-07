@@ -1,5 +1,13 @@
-import {Component, Input, ChangeDetectionStrategy, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
-import {Album} from '../core/domain';
+import {
+    Component,
+    Input,
+    ChangeDetectionStrategy,
+    Output,
+    EventEmitter,
+    OnChanges,
+    SimpleChanges
+} from '@angular/core';
+import { Album } from '../core/domain';
 
 @Component({
     selector: 'album-detail',

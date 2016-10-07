@@ -1,9 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {Observable, Subscription} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 import 'rxjs/add/operator/map';
-import {Album} from '../core/domain';
-import {AppState} from '../core/store';
+import { Album } from '../core/domain';
+import { AppState } from '../core/store';
 
 @Component({
     selector: 'dashboard',

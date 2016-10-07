@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/core';
-import {mockAlbums} from './mock-albums';
-import {Album} from './domain';
-import {AppState} from './store';
-import {Store} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { mockAlbums } from './mock-albums';
+import { Album } from './domain';
+import { AppState } from './store';
+import { Store } from '@ngrx/store';
+import { LOAD_ALBUMS, SELECT_PHOTO, SELECT_ALBUM, CHANGE_ALBUM, CHANGE_PHOTO } from './albums.reducer';
 import {
-    LOAD_ALBUMS, SELECT_PHOTO, SELECT_ALBUM,
-    CHANGE_ALBUM, CHANGE_PHOTO
-} from './albums.reducer';
-import {
-    START_ALBUMS_LOAD, END_ALBUMS_LOAD, START_ALBUM_LOAD, END_ALBUM_LOAD,
-    END_PHOTO_LOAD, START_PHOTO_LOAD
+    START_ALBUMS_LOAD,
+    END_ALBUMS_LOAD,
+    START_ALBUM_LOAD,
+    END_ALBUM_LOAD,
+    END_PHOTO_LOAD,
+    START_PHOTO_LOAD
 } from './operation.reducer';
 
 

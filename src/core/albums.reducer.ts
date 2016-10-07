@@ -1,5 +1,5 @@
-import {Album, Photo} from './domain';
-import {ActionReducer, Action} from '@ngrx/store';
+import { Album, Photo } from './domain';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const LOAD_ALBUMS = 'LOAD_ALBUMS';
 export const CHANGE_PHOTO = 'CHANGE_PHOTO';

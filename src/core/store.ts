@@ -1,7 +1,7 @@
 import * as fromAlbums from './albums.reducer';
+import { AlbumState } from './albums.reducer';
 import * as fromOperation from './operation.reducer';
-import {AlbumState} from './albums.reducer';
-import {OperationState} from './operation.reducer';
+import { OperationState } from './operation.reducer';
 
 export interface AppState {
     albums: AlbumState;
