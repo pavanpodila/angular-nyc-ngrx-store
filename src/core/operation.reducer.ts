@@ -19,8 +19,9 @@ export const initialState: OperationState = {
     loadingPhoto: false,
 };
 
-export const reducer: ActionReducer<OperationState> = (state: OperationState, action: Action) => {
+export const reducer: ActionReducer<OperationState> = (state: OperationState = initialState, action: Action) => {
     switch (action.type) {
+
         case START_ALBUMS_LOAD:
             return Object.assign({}, state, {loadingAlbums: true});
 

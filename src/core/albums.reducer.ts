@@ -19,8 +19,9 @@ export const initialState: AlbumState = {
     selectedPhoto: null
 };
 
-export const reducer: ActionReducer<AlbumState> = (state: AlbumState, action: Action) => {
+export const reducer: ActionReducer<AlbumState> = (state: AlbumState = initialState, action: Action) => {
     switch (action.type) {
+
         case LOAD_ALBUMS:
             return Object.assign({}, state, {
                 collection: action.payload,

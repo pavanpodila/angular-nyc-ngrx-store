@@ -1,12 +1,4 @@
-import {
-    Component,
-    Input,
-    ChangeDetectionStrategy,
-    Output,
-    EventEmitter,
-    OnChanges,
-    SimpleChanges
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { Album } from '../core/domain';
 
 @Component({
@@ -14,17 +6,10 @@ import { Album } from '../core/domain';
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: require('./album-detail.html')
 })
-export class AlbumDetail implements OnChanges{
+export class AlbumDetail {
     @Input() album: Album;
 
     @Output() changed = new EventEmitter<string>();
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['album']) {
-            console.log(changes['album']);
-        }
-    }
-
 
     saveAlbum(name) {
         this.changed.emit(name);
