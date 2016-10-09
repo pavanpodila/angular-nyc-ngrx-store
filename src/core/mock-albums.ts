@@ -1,24 +1,24 @@
-import uniqueId = require('lodash/uniqueId');
+import * as uniqueId from 'lodash/uniqueId';
 import { Album, Photo } from './domain';
 
 export const mockAlbums = [
     createAlbum('Yosemite',
         [
-            'Yosemite 2.jpg',
-            'Yosemite 3.jpg',
-            'Yosemite 4.jpg',
-            'Yosemite 5.jpg',
+            'Yosemite_2.jpg',
+            'Yosemite_3.jpg',
+            'Yosemite_4.jpg',
+            'Yosemite_5.jpg',
             'Yosemite.jpg'
         ]),
     createAlbum('Sierra',
         [
-            'Sierra 2.jpg',
+            'Sierra_2.jpg',
             'Sierra.jpg',
         ]),
     createAlbum('El Capitan',
         [
-            'El Capitan 2.jpg',
-            'El Capitan.jpg',
+            'El_Capitan_2.jpg',
+            'El_Capitan.jpg',
         ]),
     createAlbum('Wild Life',
         [
@@ -27,18 +27,18 @@ export const mockAlbums = [
         ]),
     createAlbum('Nature',
         [
-            'Antelope Canyon.jpg',
-            'Bahamas Aerial.jpg',
-            'Blue Pond.jpg',
-            'Death Valley.jpg',
+            'Antelope_Canyon.jpg',
+            'Bahamas_Aerial.jpg',
+            'Blue_Pond.jpg',
+            'Death_Valley.jpg',
             'Lake.jpg',
-            'Floating Ice.jpg',
-            'Foggy Forest.jpg',
-            'Foxtail Barley.jpg',
-            'Mountain Range.jpg',
+            'Floating_Ice.jpg',
+            'Foggy_Forest.jpg',
+            'Foxtail_Barley.jpg',
+            'Mountain_Range.jpg',
             'Poppies.jpg',
-            'Rice Paddy.jpg',
-            'Rolling Waves.jpg',
+            'Rice_Paddy.jpg',
+            'Rolling_Waves.jpg',
             'Snow.jpg',
             'Wave.jpg',
         ]),
@@ -47,9 +47,9 @@ export const mockAlbums = [
         [
             'Abstract.jpg',
             'Desert.jpg',
-            'Milky Way.jpg',
-            'Earth and Moon.jpg',
-            'Earth Horizon.jpg',
+            'Milky_Way.jpg',
+            'Earth_and_Moon.jpg',
+            'Earth_Horizon.jpg',
         ])
 ];
 
@@ -58,7 +58,7 @@ function createAlbum(name, photos) {
     album.id = uniqueId('A-');
 
     album.photos = photos.map(x => {
-        const photo = new Photo(x.replace(/\..+$/, ''), `/src/images/${x}`);
+        const photo = new Photo(x.replace(/\..+$/, '').replace(/_/g, ' '), `/images/${x}`);
         photo.id = uniqueId('P-');
 
         return photo;

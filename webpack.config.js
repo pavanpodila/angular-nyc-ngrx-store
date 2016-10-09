@@ -2,6 +2,7 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -53,6 +54,11 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: 0}),
         new ExtractTextPlugin('app.css'),
+        new CopyPlugin([{
+            from: 'src/images/*.*',
+            to: 'images',
+            flatten: true
+        }]),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         })
