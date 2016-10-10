@@ -24,6 +24,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
          * Chrome or Firefox
          *
          * See: https://github.com/zalmoxisus/redux-devtools-extension
+         *
+         * TODO: Explore why it throws some exceptions when changing Albums
          */
         // StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
